@@ -23,11 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.force.api.ApiException;
-
-import com.force.example.fulfillment.order.model.Invoice;
 import com.force.example.fulfillment.order.model.Order;
-import com.force.example.fulfillment.order.service.InvoiceService;
 import com.force.example.fulfillment.order.service.OrderService;
 
 @Controller
@@ -36,9 +32,6 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
-	
-	@Autowired
-	private InvoiceService invoiceService;
 	
 	private Validator validator;
 	
@@ -109,15 +102,6 @@ public class OrderController {
 			throw new ResourceNotFoundException(orderId);
 		}
 		model.addAttribute("order", order);
-		
-		Invoice invoice;
-		try {
-			invoice = invoiceService.findInvoice(order.getId());
-		} catch (ApiException ae) {
-			// No match
-			invoice = new Invoice();
-		}
-		model.addAttribute("invoice", invoice);		
 		
 		return "order";
 	}

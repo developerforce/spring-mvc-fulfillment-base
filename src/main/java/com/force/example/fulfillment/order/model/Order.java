@@ -20,7 +20,6 @@ public class Order {
     @Column(unique = true)
 	@NotNull
 	@Size(min = 15, max = 18)
-	@CheckInvoiceId
 	private String id;
 
 	public Integer getOrderId() {
