@@ -11,7 +11,7 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 	<ul>
-		<li><a href="order">Ajax @Controller Example</a></li>
+		<li><a href="orderui">Ajax @Controller Example</a></li>
 	</ul>
 </body>
 </html>

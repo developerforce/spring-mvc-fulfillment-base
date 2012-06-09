@@ -74,19 +74,12 @@ public class OrderController {
 		}
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, produces={MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method=RequestMethod.GET)
 	public @ResponseBody List<Order> getOrders() {
 		return orderService.listOrders();
 	}
 
-	@RequestMapping(method=RequestMethod.GET, produces={MediaType.TEXT_HTML_VALUE})
-	public String getOrdersPage(Model model) {
-		model.addAttribute("order", new Order());
-		model.addAttribute("orders", orderService.listOrders());
-		return "orders";
-	}
-
-	@RequestMapping(value="{orderId}", method=RequestMethod.GET, produces={MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value="{orderId}", method=RequestMethod.GET)
 	public @ResponseBody Order getOrder(@PathVariable Integer orderId) {
 		Order order = orderService.findOrder(orderId);
 		if (order == null) {
@@ -95,25 +88,13 @@ public class OrderController {
 		return order;
 	}
 	
-	@RequestMapping(value="{orderId}", method=RequestMethod.GET, produces={MediaType.TEXT_HTML_VALUE})
-	public String getOrderPage(@PathVariable Integer orderId, Model model) {
-		Order order = orderService.findOrder(orderId);
-		if (order == null) {
-			throw new ResourceNotFoundException(orderId);
-		}
-		model.addAttribute("order", order);
-		
-		return "order";
-	}
-	
 	@RequestMapping(value="{orderId}", method=RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteOrder(@PathVariable Integer orderId) {
 		orderService.removeOrder(orderId);
 	}
 	
-	// internal helpers
-	
+	// internal helper
 	private Map<String, String> validationMessages(Set<ConstraintViolation<Order>> failureSet) {
 		Map<String, String> failureMessageMap = new HashMap<String, String>();
 		for (ConstraintViolation<Order> failure : failureSet) {

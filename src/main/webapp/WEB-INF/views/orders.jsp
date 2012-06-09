@@ -43,7 +43,7 @@
 			<table>
 				<tr><th>Invoice ID</th><th>Order Number</th></tr>
 			    <c:forEach items="${orders}" var="order">
-			    	<tr><td><a href="order/${order.orderId}"><c:out value="${order.id}"/></a></td><td><a href="order/${order.orderId}"><c:out value="${order.orderId}"/></a></td></tr>
+			    	<tr><td><a href="orderui/${order.orderId}"><c:out value="${order.id}"/></a></td><td><a href="orderui/${order.orderId}"><c:out value="${order.orderId}"/></a></td></tr>
 			    </c:forEach>			
 			</table>
 		</div>

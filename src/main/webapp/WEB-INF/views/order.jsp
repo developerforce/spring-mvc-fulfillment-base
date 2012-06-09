@@ -20,13 +20,16 @@
 			<h2>
 				Order <c:out value="${order.orderId}"/>
 			</h2>
+			<div class="span-12 last">
+			    <a href="javascript:history.back()">Back</a> <input id="delete" type="submit" value="Delete" />
+			</div>
 		</div>	
 	</body>
 	<script>
 	$("#delete").click(function() {
 		$.deleteJSON("${order.orderId}", function(data) {
 			alert("Deleted order ${order.orderId}");
-			location.href = "/order";
+			location.href = "/orderui";
 		}, function(data) {
 			alert("Error deleting order ${order.orderId}");
 		});
