@@ -162,6 +162,22 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+        <!-- Force.com access -->
+        <dependency>
+            <groupId>com.force.api</groupId>
+            <artifactId>force-rest-api</artifactId>
+            <version>0.0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>com.force.sdk</groupId>
+            <artifactId>force-oauth</artifactId>
+            <version>22.0.8-BETA</version>
+        </dependency>
+        <dependency>
+            <groupId>com.force.sdk</groupId>
+            <artifactId>force-springsecurity</artifactId>
+            <version>22.0.8-BETA</version>
+        </dependency>
 	</dependencies>
 	<repositories>
 		<!-- For Hibernate Validator -->
@@ -173,6 +189,11 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+        <repository>
+            <id>force-rest-api</id>
+            <name>force-rest-api repository on GitHub</name>
+            <url>http://jesperfj.github.com/force-rest-api/repository/</url>
+        </repository>
 	</repositories>
 	<build>
 		<plugins>
