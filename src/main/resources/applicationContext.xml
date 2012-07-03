@@ -28,10 +28,10 @@
 	<tx:annotation-driven />
     
     <fss:oauth>
-    <fss:oauthInfo endpoint="http://login.salesforce.com"
-        oauth-key="3MVG9y6x0357HleczgGPFxcVeCBCePkqDASjO2rGgMFUNer7q9xTE_xipXvC0yTZ5Nr0zrHnlt9LN_jdOhonr"
-        oauth-secret="6863509210995077360"/>
-    </fss:oauth>
+		<fss:oauthInfo endpoint="http://login.salesforce.com"
+		        oauth-key="#{systemEnvironment['OAUTH_CLIENT_KEY']}"
+		        oauth-secret="#{systemEnvironment['OAUTH_CLIENT_SECRET']}"/>
+	</fss:oauth>
 
     <security:http use-expressions="true">
         <security:intercept-url pattern="/orderui*" access="isAuthenticated()" />
